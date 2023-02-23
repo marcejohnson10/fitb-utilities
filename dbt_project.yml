@@ -10,7 +10,7 @@ dispatch:
   - macro_namespace: dbt_utils
     search_order: ['my_project_name', 'fitb_dbt_utils', 'dbt_utils']
 
-target-path: ["data_project_assets/target"]
+target-path: ["target"]
 clean-targets: ["target", "dbt_packages", "packages"]
 macro-paths: ["macros"]
 log-path: ["data_project_assets/logs"]
