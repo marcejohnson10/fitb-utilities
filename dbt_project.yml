@@ -12,5 +12,5 @@ dispatch:
 
 target-path: "target"
 clean-targets: ["target", "dbt_packages", "packages"]
-macro-paths: "macros"
+macro-paths: ["macros"]
 log-path: "logs"
