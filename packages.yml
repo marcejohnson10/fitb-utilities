@@ -1,0 +1,5 @@
+packages:
+  - package: dbt-labs/dbt_utils
+    version: [">=0.9.6", "<2.0.0"]
+  - package: Snowflake-Labs/dbt_constraints
+    version: ">=0.6.0"    
