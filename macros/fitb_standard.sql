@@ -1,9 +1,9 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
-{% if execute %}
+
     {% set dbt_job_run_id = env_var('DBT_CLOUD_JOB_ID') %}
     {%- set default_schema = target.schema -%}
-{%- endif -%}
+
     {%- if custom_schema_name is none -%}
 
         {{ default_schema }}
