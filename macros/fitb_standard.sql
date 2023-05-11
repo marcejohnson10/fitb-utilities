@@ -7,10 +7,10 @@
         {{ default_schema }}
 
     {%- else -%}
-        {% if  env_var('DBT_ENVIRONMENT') == "sandbox" and dbt_job_run_id is none-%} 
+        {% if  env_var('DBT_ENVIRONMENT') == "sandbox" and dbt_job_run_id == "not set" -%} 
             {{target.user}}_{{ custom_schema_name | trim }}
-        {%- elif env_var('DBT_ENVIRONMENT') == "sandbox" and dbt_job_run_id is not none-%}-%}
-            {{default_schema}}{{ custom_schema_name | trim }}
+        {%- elif env_var('DBT_ENVIRONMENT') == "sandbox" and dbt_job_run_id != "not set" -%}-%}
+            {{default_schema}}_{{ custom_schema_name | trim }}
         {%- else -%}            
             {{ custom_schema_name | trim }}           
         {%- endif -%}
