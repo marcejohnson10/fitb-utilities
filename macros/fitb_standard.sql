@@ -6,7 +6,7 @@
     {%- if custom_schema_name is none -%}
         {{ default_schema }}
 
-    {%- elif dbt_job_id == '1'  -%}
+    {%- elif dbt_job_id != '1'  -%}
         {{ default.schema }}_{{ custom_schema_name | trim }}
   
     {%- else -%}
