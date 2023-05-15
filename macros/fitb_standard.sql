@@ -10,11 +10,11 @@
         {{ default.schema }}_{{ custom_schema_name | trim }}
 #}  
     {%- else -%}
-        {{ default.schema }}_{{ custom_schema_name | trim }}
+        {{ default_schema }}_{{ custom_schema_name | trim }}
 
     {%- endif -%}
     
-    {% do log("DBTCloudJobID: " ~ dbt_job_id, info=true) %}
+{#    {% do log("DBTCloudJobID: " ~ dbt_job_id, info=true) %}  #}
     {# do log("DefaultSchema: " ~ default_schema ~ ", CustomSchema: " ~ custom_schema_name, info=true) #}
  
 {%- endmacro %}
