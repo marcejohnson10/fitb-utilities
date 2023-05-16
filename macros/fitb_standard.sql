@@ -1,22 +1,29 @@
+{#
 {% macro generate_schema_name(custom_schema_name, node) -%}
-
     {%- set default_schema = target.schema -%}
-    {# set dbt_job_id = env_var('DBT_CLOUD_RUN_REASON_CATEGORY', 'x') #}
-
     {%- if custom_schema_name is none -%}
         {{ default_schema }}
-{#
-    {%- elif dbt_job_id != 'x'  -%}
-        {{ default.schema }}_{{ custom_schema_name | trim }}
-#}  
     {%- else -%}
-        {{ default_schema }}_{{ custom_schema_name | trim }}
+        {{ custom_schema_name | trim }}
+    {%- endif -%}
+{%- endmacro %}
+#}
+
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- set default_schema = target.schema -%}
+    {%- if target.name[-3:] == 'dev' -%}
+        {{ target.schema }}_{{ custom_schema_name | trim }}
+
+    {%- elif target.schema[:9] == 'dbt_cloud' -%}
+        {{ target.schema }}_{{ custom_schema_name | trim }}
+
+    {%- elif custom_schema_name is none -%}
+        {{ default_schema }}
+
+    {%- else -%}
+        {{ custom_schema_name | trim }}
 
     {%- endif -%}
-    
-{#    {% do log("DBTCloudJobID: " ~ dbt_job_id, info=true) %}  #}
-    {# do log("DefaultSchema: " ~ default_schema ~ ", CustomSchema: " ~ custom_schema_name, info=true) #}
- 
 {%- endmacro %}
 
 {% macro set_query_tag() -%}
