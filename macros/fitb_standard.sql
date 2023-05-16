@@ -11,7 +11,7 @@
 
 {% macro generate_schema_name(custom_schema_name, node) -%}
     {%- set default_schema = target.schema -%}
-    {%- if target.name[-3:] == 'dev' -%}
+    {%- if target.name[-3:] == 'sandbox' -%}
         {{ target.schema }}_{{ custom_schema_name | trim }}
 
     {%- elif target.schema[:9] == 'dbt_cloud' -%}
